@@ -1,0 +1,8 @@
+.container-list{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.title{
+  width: 50%;
+}

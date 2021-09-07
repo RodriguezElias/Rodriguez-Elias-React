@@ -1,0 +1,14 @@
+.container-carousel{
+  height: 90vh;
+}
+.container-img{
+  height: 90vh;
+}
+.img{
+  height: 100% ;
+}
+.title-img{
+position: absolute !important;
+right: 15%;
+top: 15%;
+}
