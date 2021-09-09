@@ -3,7 +3,6 @@ import './Carousel.css'
 import IMAGE1 from '../../assets/images/woman-1.jpg'
 import IMAGE2 from '../../assets/images/woman-2.jpg'
 import IMAGE3 from '../../assets/images/woman-3.jpg'
-import ItemListContainer from '../ItemListContainer/ItemListContainer'
 
 export default function Carousels() {
   return (
@@ -17,7 +16,7 @@ export default function Carousels() {
     />
     <div className="title-img">
       <h1>
-        <ItemListContainer greetings={"Bienvenidos a Viva Lugano donde encontrara todo tipo de indumentaria"} />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores non quasi perspiciatis minima consectetur totam?
       </h1>
     </div>
   </Carousel.Item>
@@ -30,7 +29,7 @@ export default function Carousels() {
 
     <div className="title-img">
       <h1>
-        <ItemListContainer greetings={"Bienvenidos a Viva Lugano donde encontrara todo tipo de indumentaria"} />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores non quasi perspiciatis minima consectetur totam?
       </h1>
     </div>
   </Carousel.Item>
@@ -42,7 +41,7 @@ export default function Carousels() {
     />
     <div className="title-img">
       <h1>
-        <ItemListContainer greetings={"Bienvenidos a Viva Lugano donde encontrara todo tipo de indumentaria"} />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores non quasi perspiciatis minima consectetur totam?
       </h1>
     </div>
   </Carousel.Item>

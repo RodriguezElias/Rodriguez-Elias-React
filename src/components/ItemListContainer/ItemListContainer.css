@@ -1,8 +1,8 @@
 .container-list{
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+  width: 80%;
+  margin: 20px auto;
 }
-.title{
-  width: 50%;
+.container-cards{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }

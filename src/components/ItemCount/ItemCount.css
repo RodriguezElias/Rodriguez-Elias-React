@@ -1,0 +1,11 @@
+.container-buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.control-count{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px 0px;
+}
