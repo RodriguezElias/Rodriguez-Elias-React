@@ -22,9 +22,6 @@ export default function ItemCount({ stock, initial, onAdd }) {
       });
     }
   };
-  const addCart = ()=>{
-    onAdd(data.count)
-  };
 
   return (
     <div className="container-buttons">
@@ -38,7 +35,7 @@ export default function ItemCount({ stock, initial, onAdd }) {
       </button>
       </div>
       <div className="add-cart">
-      <button onClick={addCart}>Agregar Al carrito</button>
+      <button onClick={()=>onAdd(data.count)}>Agregar Al carrito</button>
       </div>
     </div>
   );
