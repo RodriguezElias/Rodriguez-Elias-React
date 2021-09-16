@@ -25,19 +25,26 @@ const products = [
   },
 ];
 
-const getFetch = ()=>{
-  const myPromise = new Promise((res, rej) => {
+
+ export const getItems = new Promise((res, rej) => {
     let response = "200";
     if (response === "200") {
       setTimeout(() => {
         res(products);
-      }, 3000);
+      }, 5000);
     } else {
       rej("404");
     }
   });
-  
-  return myPromise
-}
 
-export default getFetch
+  export const getItem = new Promise((res, rej) => {
+    const test = products.find(prod => prod.id === 2)
+    let response = "200";
+    if (response === "200") {
+      setTimeout(() => {
+        res(test);
+      }, 2000);
+    } else {
+      rej("404");
+    }
+  });

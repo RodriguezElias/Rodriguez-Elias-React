@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import ItemList from '../ItemList/ItemList';
-import getFetch from '../../utils/Mocks'
 import './ItemListContainer.css'
+import { getItems } from "../../utils/Mocks";
 
 export default function ItemListContainer({greetings}) {
   const [product, setProduct] = useState([]);
   const [loading, setloading] = useState(true)
   useEffect(() => {
-    getFetch()
+    getItems
     .then((response) => {
       setProduct(response);
     })
