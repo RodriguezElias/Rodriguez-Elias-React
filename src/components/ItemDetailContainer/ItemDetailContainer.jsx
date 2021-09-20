@@ -1,14 +1,20 @@
 import { useState,useEffect } from "react"
-import { getItem } from "../../utils/Mocks"
+import { useParams } from "react-router-dom";
+import { getItems } from "../../utils/Mocks"
 import ItemDetail from "../ItemDetail/ItemDetail"
 
 export default function ItemDetailContainer() {
   const [item, setItem] = useState({})
+  const { id } = useParams()
   useEffect(() => {
-    getItem
-    .then(resp => setItem(resp))
-  },[])
-
+    getItems
+    .then((response) => {
+      setItem(response.find(prod => prod.id.toString() === id))
+    })
+  },[id])
+  console.log(item);
+  console.log("hola");
+  
   return (
     <>
       <ItemDetail item={item} />

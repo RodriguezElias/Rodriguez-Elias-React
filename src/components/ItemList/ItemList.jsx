@@ -10,8 +10,10 @@ export default function ItemList({item,onAdd}) {
         return (
           <Item
             key={prod.id}
+            id={prod.id}
             title={prod.name}
-            description={prod.descripcion}
+            price={prod.price}
+            description={prod.description}
             image={prod.image}
             stock={prod.stock}
             onAdd={onAdd}
