@@ -28,9 +28,6 @@ export default function ItemListContainer({greetings}) {
     }
   }, [idCategory])
  
-  const onAdd = (cant)=>{
-    console.log(cant);
-  }
   return (
     <div className="container-list">
       <div className="title">
@@ -39,7 +36,7 @@ export default function ItemListContainer({greetings}) {
       </h1>
       </div>
       <div className="container-cards">
-        {loading? <h2>Cargando...</h2> : <ItemList item={product} onAdd={onAdd}/>}
+        {loading? <h2>Cargando...</h2> : <ItemList item={product}/>}
       </div>
     </div>
   )

@@ -12,8 +12,6 @@ export default function ItemDetailContainer() {
       setItem(response.find(prod => prod.id.toString() === id))
     })
   },[id])
-  console.log(item);
-  console.log("hola");
   
   return (
     <>

@@ -4,6 +4,7 @@ import Carousel from "./components/Carousel/Carousel";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import "./App.css";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route component={ItemListContainer} path='/categoria/:idCategory' />
 
         <Route component={ItemDetailContainer} path='/detalle/:id' />
+        
+        <Route component={Cart} path='/cart' />
       </Switch>
     </BrowserRouter>
   );
