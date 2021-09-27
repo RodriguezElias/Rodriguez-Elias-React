@@ -11,7 +11,6 @@ function App() {
     <BrowserRouter>
       <div className="header">
         <NavBar />
-        <Carousel />
       </div>
       <Switch>
         <Route exact component={ItemListContainer}path='/' />
