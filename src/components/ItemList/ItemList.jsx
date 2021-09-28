@@ -1,7 +1,8 @@
+import Placeholder from "../Placeholder/Placeholder";
 import Item from "../Item/Item";
 import './ItemList.css'
 
-export default function ItemList({item,onAdd}) {
+export default function ItemList({item,onAdd,status}) {
 
 
   return (

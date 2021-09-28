@@ -1,29 +1,29 @@
 const products = [
   {
+    id: 0,
+    image: "https://s3-sa-east-1.amazonaws.com/saasargentina/JaFfzVCrjO8t2GS5mQuS/miniatura",
+    category: "pc-armada",
+    name: "PC Gamer Armada | Intel Core I3 10100F + 8GB + GTX 1650 SUPER 4Gb",
+    description: "PC Gamer Armada | Intel Core I3 10100F + 8GB + GTX 1650 SUPER 4Gb",
+    price: 143999,
+    stock: 5,
+  },
+  {
     id: 1,
-    image: "https://m.media-amazon.com/images/I/51H06jjz45L._AC_UX569_.jpg",
-    category: "mujer",
-    name: "Pantalon Mujer Levis",
-    description: "Vaqueros ajustados Signature by Levi Strauss & Co.",
-    price: 1200,
+    image: "https://s3-sa-east-1.amazonaws.com/saasargentina/8SWvUfUUKmrNVrakCMaU/imagen",
+    category: "laptop",
+    name: "Notebook ASUS ZenBook Flip S UX371EA Intel I7 1165 G7",
+    description: "Notebook ASUS ZenBook Flip S UX371EA Intel I7 1165 G7 | 16GB RAM | 512Gb NVME | Win10 | 13.3 4K OLED Tactil",
+    price: 259999,
     stock: 5,
   },
   {
     id: 2,
-    image: "https://m.media-amazon.com/images/I/61ifPh2yf-L._AC_UY550_.jpg",
-    category: "mujer",
-    name: "ZESICA - Vestido para mujer",
-    description: "Vestido para mujer, diseño floral bohemio, cuello en V, manga corta",
-    price: 2500,
-    stock: 5,
-  },
-  {
-    id: 3,
-    image: "https://m.media-amazon.com/images/I/61Im0OyYa8L._AC_UX569_.jpg",
-    category: "hombre",
-    name: "Camiseta de manga corta para hombre",
-    description: "Masters Tournament Augusta National Golf - Camiseta de manga corta para hombre",
-    price: 1500,
+    image: "https://s3-sa-east-1.amazonaws.com/saasargentina/Cd3z5qZNIkocPDeEF0xs/imagen",
+    category: "laptop",
+    name: "Notebook HP Omen Intel I7 10750H ",
+    description: "Notebook HP Omen Intel I7 10750H | 16GB DDR4 | GTX 1650 TI 4Gb | 512Gb NVME + Optane 32Gb | Win10 | 15.6 FHD",
+    price: 194999,
     stock: 5,
   },
 ];
@@ -34,7 +34,7 @@ const products = [
     if (response === "200") {
       setTimeout(() => {
         res(products);
-      }, 5000);
+      }, 4000);
     } else {
       rej("404");
     }

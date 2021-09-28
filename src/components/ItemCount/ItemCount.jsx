@@ -42,7 +42,7 @@ export default function ItemCount({ stock, initial, onAdd }) {
       </div>
       <div className="add-cart">
         { changeButton ? (
-          <button onClick={() => onAdd(addCart)}>Agregar Al carrito</button>
+          <button onClick={addCart}>Agregar Al carrito</button>
         ) : (
           <div>
           <Link to='/cart'>

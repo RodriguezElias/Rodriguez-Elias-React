@@ -1,13 +1,15 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
-import Carousel from "./components/Carousel/Carousel";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import "./App.css";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Cart/Cart";
+import CartContextProvider  from "./context/cartContext";
+
 
 function App() {
-  return (
+  return ( 
+    <CartContextProvider>
     <BrowserRouter>
       <div className="header">
         <NavBar />
@@ -22,6 +24,7 @@ function App() {
         <Route component={Cart} path='/cart' />
       </Switch>
     </BrowserRouter>
+    </CartContextProvider>
   );
 }
 
