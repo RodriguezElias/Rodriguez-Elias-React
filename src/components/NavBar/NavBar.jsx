@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -7,9 +7,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
 import CardWidget from "../CarWidget/CardWidget";
 import { Link } from "react-router-dom";
-import { Collapse } from "bootstrap";
+import { useCartContext } from "../../context/cartContext";
 
 export default function NavBar() {
+  const [state, setstate] = useState(0);
+  const { iconCart } = useCartContext();
+  useEffect(() => {
+    setstate(iconCart());
+  }, [iconCart]);
+
   return (
     <Navbar expand="lg" variant="dark" className="navbar">
       <Container className="container">
@@ -37,9 +43,11 @@ export default function NavBar() {
               <NavDropdown.Item href="#action/3.4">Gabinetes</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Link exact to="/cart">
-            <CardWidget />
-          </Link>
+          {state > 0 && (
+            <Link exact to="/cart">
+              <CardWidget count={state} />
+            </Link>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

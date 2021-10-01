@@ -8,13 +8,14 @@ export default function ItemCount({ stock, initial, onAdd }) {
     stock: stock,
   });
   const [changeButton, setChangeButton] = useState(true)
-
+  const [state, setstate] = useState(false)
   const addcount = () => {
     if (data.count < data.stock) {
       setData({
         count: data.count + 1,
         stock,
       });
+      setstate(true)
     }
   };
   const decreasecount = () => {
@@ -23,6 +24,7 @@ export default function ItemCount({ stock, initial, onAdd }) {
         count: data.count - 1,
         stock,
       });
+      setstate(true)
     }
   };
   const addCart = () =>{
@@ -44,7 +46,7 @@ export default function ItemCount({ stock, initial, onAdd }) {
         { changeButton ? (
           <button onClick={addCart}>Agregar Al carrito</button>
         ) : (
-          <div>
+          <div style={state ?{}:{}}>
           <Link to='/cart'>
           <button>Terminar compra</button>
           </Link>
