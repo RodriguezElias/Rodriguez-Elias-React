@@ -31,13 +31,13 @@ export default function NavBar() {
               title="Menu"
               id="basic-nav-dropdown"
             >
-              <Link exact to="/categoria/pc-armada">
+              <Link exact to="/categoria/Pc-escritorio" className="text-decoration-none">
                 <NavDropdown.Item href="#action/3.1">
                   Pc Escritorio
                 </NavDropdown.Item>
               </Link>
-              <Link exact to="/categoria/laptop">
-                <NavDropdown.Item href="#action/3.2">Laptop</NavDropdown.Item>
+              <Link exact to="/categoria/Laptop" className="text-decoration-none">
+                <NavDropdown.Item href="#action/3.2" >Laptop</NavDropdown.Item>
               </Link>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Gabinetes</NavDropdown.Item>

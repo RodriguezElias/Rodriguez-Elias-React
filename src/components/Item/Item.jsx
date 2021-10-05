@@ -10,8 +10,8 @@ export default function Item({title,price,image,id}) {
         <Card.Img variant="top" src={image} className="product-img" />
         </Link>
         <Card.Body className="containerInfo">
-        <Card.Title>{title}</Card.Title>
-        <Card.Title>{`$ ${price}`} </Card.Title>
+        <Card.Title className="card-title p-3">{title}</Card.Title>
+        <Card.Text className="p-2">{`$ ${price}`} </Card.Text>
         </Card.Body>
       </Card>
   );

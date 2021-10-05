@@ -43,6 +43,7 @@
 }
 .container-payment p{
   font-weight: bold;
+  font-size: 1.3rem;
 }
 .cart-empty{
   width: 90%;

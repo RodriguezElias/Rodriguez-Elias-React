@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Cart() {
   const [totalPrice, setTotalPrice] = useState([]);
-  const { cartList, calcPrice, deleteItem, iconCart } = useCartContext();
+  const { cartList, calcPrice, deleteItem } = useCartContext();
 
   useEffect(() => {
     setTotalPrice(calcPrice());

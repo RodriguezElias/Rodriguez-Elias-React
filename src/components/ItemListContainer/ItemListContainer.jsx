@@ -1,48 +1,63 @@
 import { useState, useEffect } from "react";
-import ItemList from '../ItemList/ItemList';
-import './ItemListContainer.css'
+import ItemList from "../ItemList/ItemList";
+import "./ItemListContainer.css";
 import { getItems } from "../../utils/Mocks";
 import { useParams } from "react-router-dom";
-import  Placeholder  from "../Placeholder/Placeholder";
+import Placeholder from "../Placeholder/Placeholder";
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+import { getFirestore } from "../../services/getFirebase";
 
-export default function ItemListContainer({greetings}) {
-  const [product, setProduct] = useState([{ id: 1 }, { id: 2 }, { id: 3 },{ id: 4 },{ id: 5 }]);
-  const [loading, setloading] = useState(true)
-  const { idCategory } = useParams()
-  
+export default function ItemListContainer() {
+  const [product, setProduct] = useState([
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
+    { id: 5 },
+  ]);
+  const [loading, setloading] = useState(true);
+  const { idCategory } = useParams();
 
   useEffect(() => {
     if (idCategory) {
-      getItems
-      .then((response) => {
-        setProduct(response.filter(prod => prod.category === idCategory));
-      })
-      .catch((err) => console.log(err))
-      .finally(()=> setloading(false))
-    }else{
-      getItems
-      .then((response) => {
-        setProduct(response);
-      })
-      .catch((err) => console.log(err))
-      .finally(()=> setloading(false))
+      const dbQuery = getFirestore();
+      dbQuery
+        .collection("items")
+        .where("category", "==", idCategory)
+        .get()
+        .then((resp) => {
+          setProduct(
+            resp.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
+          );
+        })
+        .catch((err) => console.log(err))
+        .finally(() => setloading(false));
+    } else {
+      const dbQuery = getFirestore();
+      dbQuery
+        .collection("items")
+        .get()
+        .then((resp) => {
+          setProduct(
+            resp.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
+          );
+        })
+        .catch((err) => console.log(err))
+        .finally(() => setloading(false));
     }
-  }, [idCategory])
+  }, [idCategory]);
   return (
     <div className="container-list">
-      <div className="title">
-      <h1>
-        {greetings}
-      </h1>
-      </div>
-      <div className="container-cards">
-        {loading &&  product.map((prod)=>{
+      <Breadcrumbs category={idCategory} active={true} />
+      {loading &&
+        product.map((prod) => {
           return (
-            <div key={prod.id}><Placeholder /></div>
+            <div key={prod.id}>
+              <Placeholder />
+            </div>
           );
         })}
-        {!loading && <ItemList item={product}/>}
-      </div>
+      {!loading && <ItemList item={product} />}
     </div>
-  )
+  );
 }

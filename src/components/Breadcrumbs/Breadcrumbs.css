@@ -1,0 +1,10 @@
+.container-breadcrumb{
+  background-color: #3ac8c8;
+  padding: 1px;
+  border-radius: 5px;
+}
+
+.bread-item::before{
+  content: "/";
+
+}

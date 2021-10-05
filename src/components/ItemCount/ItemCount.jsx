@@ -8,14 +8,14 @@ export default function ItemCount({ stock, initial, onAdd }) {
     stock: stock,
   });
   const [changeButton, setChangeButton] = useState(true)
-  const [state, setstate] = useState(false)
+  const [state, setstate] = useState(true)
   const addcount = () => {
     if (data.count < data.stock) {
       setData({
         count: data.count + 1,
         stock,
       });
-      setstate(true)
+      setstate(false)
     }
   };
   const decreasecount = () => {
@@ -24,13 +24,15 @@ export default function ItemCount({ stock, initial, onAdd }) {
         count: data.count - 1,
         stock,
       });
-      setstate(true)
+      setstate(false)
     }
   };
   const addCart = () =>{
     onAdd(data.count)
     setChangeButton(false)
+    setstate(true)
   }
+  console.log(state);
   return (
     <div className="container-buttons">
       <div className="control-count">
@@ -46,7 +48,8 @@ export default function ItemCount({ stock, initial, onAdd }) {
         { changeButton ? (
           <button onClick={addCart}>Agregar Al carrito</button>
         ) : (
-          <div style={state ?{}:{}}>
+          <>
+          <div style={{ display: state? 'block': 'none' } }>
           <Link to='/cart'>
           <button>Terminar compra</button>
           </Link>
@@ -54,6 +57,8 @@ export default function ItemCount({ stock, initial, onAdd }) {
           <button>Seguir comprando</button>
           </Link>
           </div>
+          {state ===false && <button onClick={addCart}>Agregar Al carrito</button>}
+          </>
         )}
       </div>
     </div>
