@@ -17,21 +17,12 @@ export default function ItemDetail({ item }) {
   };
   return (
     <>
-      {/* <Breadcrumb>
-        <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-        <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
-          {item.category}
-        </Breadcrumb.Item>
-        <Breadcrumb.Item active>
-          {item.bread}
-        </Breadcrumb.Item>
-      </Breadcrumb> */}
       {!isImageLoaded && <PlaceholderCart />}
       <div
         className={`${isImageLoaded ? "d-block" : "d-none"} container-detail`}
         onLoad={() => setTimeout(() => setIsImageLoaded(true), 1500)}
       >
-        <Breadcrumbs category={item.category} bread={item.bread} toBread={item.id} />
+        <Breadcrumbs category={item.category} bread={item.bread} />
         <div className="image-detail">
           <img src={item.image} alt="" />
         </div>

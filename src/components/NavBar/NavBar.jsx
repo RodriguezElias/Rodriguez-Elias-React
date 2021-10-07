@@ -43,11 +43,9 @@ export default function NavBar() {
               <NavDropdown.Item href="#action/3.4">Gabinetes</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          {state > 0 && (
             <Link exact to="/cart">
               <CardWidget count={state} />
             </Link>
-          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -1,4 +1,4 @@
-.container-product{
+.item-list{
   display: grid;
   justify-content: center;
   grid-template-columns: 1fr;

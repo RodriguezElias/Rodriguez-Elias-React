@@ -48,7 +48,7 @@ export default function ItemListContainer() {
   }, [idCategory]);
   return (
     <div className="container-list">
-      <Breadcrumbs category={idCategory} active={true} />
+      <Breadcrumbs category={idCategory}/>
       {loading &&
         product.map((prod) => {
           return (

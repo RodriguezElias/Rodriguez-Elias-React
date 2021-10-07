@@ -45,6 +45,12 @@
   font-weight: bold;
   font-size: 1.3rem;
 }
+.form-order{
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  background-color: #b0dddd;
+}
 .cart-empty{
   width: 90%;
   background-color:#f8f8f67c;
