@@ -79,6 +79,7 @@ export default function Cart() {
         })
         .catch((err) => console.log(err));
     });
+    setModalShow(true)
   };
   /*Guardar los inputs en el estado del formulario*/
   const handleOnChange = (e) => {
@@ -158,7 +159,7 @@ export default function Cart() {
                     name="email2"
                   />
                 </Form.Group>
-                <button onClick={() => setModalShow(true)}>
+                <button>
                   Confirmar Compra
                 </button>
                 <ModalOrder

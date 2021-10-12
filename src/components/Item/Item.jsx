@@ -12,7 +12,7 @@ export default function Item({title,price,image,id}) {
         <Card.Body className="containerInfo">
         <Card.Title className="card-title p-3">{title}</Card.Title>
         <Card.Text className="p-2">{`$ ${price}`} </Card.Text>
-        </Card.Body>
+        </Card.Body> 
       </Card>
   );
 }
