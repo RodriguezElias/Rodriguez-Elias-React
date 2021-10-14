@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
-import "./ItemListContainer.css";
-import { getItems } from "../../utils/Mocks";
 import { useParams } from "react-router-dom";
 import Placeholder from "../Placeholder/Placeholder";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";

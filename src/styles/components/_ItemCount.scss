@@ -1,0 +1,21 @@
+.container-buttons{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $background-color2;
+  .control-count{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0px;
+  }
+  // button{
+  //   background-color:$color-primary ;
+  //   padding: 4px;
+  //   border-radius: 5px;
+  //   margin: 2px;
+  // }
+
+
+}

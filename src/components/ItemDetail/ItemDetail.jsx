@@ -3,8 +3,7 @@ import { useCartContext } from "../../context/cartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import PlaceholderCart from "../Placeholder/PlaceholderCart";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
-//import { Breadcrumb } from "react-bootstrap";
-import "./ItemDetail.css";
+
 
 export default function ItemDetail({ item }) {
   const [isImageLoaded, setIsImageLoaded] = useState(false);

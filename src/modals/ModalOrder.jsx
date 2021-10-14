@@ -1,16 +1,17 @@
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 export default function ModalOrder(props) {
   return (
     <Modal
-      {...props}
+      show={props.show}
+      onHide={props.onHide}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
-          Id de compra: {props.idOrder}
+          Id de compra: {props.idorder}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -19,7 +20,7 @@ export default function ModalOrder(props) {
       </Modal.Body>
       <Modal.Footer>
         <button
-          onClick={props.onclick}
+          onClick={props.mycustomattribute}
           style={{
             backgroundColor: "#3ac8c8 ",
             padding: "4px",

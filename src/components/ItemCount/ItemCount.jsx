@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./ItemCount.css";
 
 export default function ItemCount({ stock, initial, onAdd }) {
   const [data, setData] = useState({
@@ -32,15 +31,14 @@ export default function ItemCount({ stock, initial, onAdd }) {
     setChangeButton(false)
     setstate(true)
   }
-  console.log(state);
   return (
     <div className="container-buttons">
       <div className="control-count">
-        <button className="bg-transparent border-0" onClick={decreasecount}>
+        <button className="bg-transparent border-0 button-primary" onClick={decreasecount}>
           <i className="fas fa-minus"></i>
         </button>
         <span>{data.count}</span>
-        <button className="bg-transparent border-0" onClick={addcount}>
+        <button className="bg-transparent border-0 button-primary" onClick={addcount}>
           <i className="fas fa-plus"></i>
         </button>
       </div>
@@ -51,10 +49,10 @@ export default function ItemCount({ stock, initial, onAdd }) {
           <>
           <div style={{ display: state? 'block': 'none' } }>
           <Link to='/cart'>
-          <button>Terminar compra</button>
+          <button className="  button-primary">Terminar compra</button>
           </Link>
           <Link to='/'>
-          <button>Seguir comprando</button>
+          <button className="  button-primary">Seguir comprando</button>
           </Link>
           </div>
           {state ===false && <button onClick={addCart}>Agregar Al carrito</button>}

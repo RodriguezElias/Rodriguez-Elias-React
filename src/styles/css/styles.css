@@ -1,0 +1,244 @@
+/* <!-- utils --> */
+.button-primary {
+  background-color: #3ac8c8;
+  padding: 4px;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+/* <!-- Components --> */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("../../assets/images/fondo-3.jpg");
+}
+
+.container-breadcrumb {
+  background-color: #3ac8c8;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.container-breadcrumb ol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.container-breadcrumb ol a {
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.container-cart {
+  width: 100%;
+  min-height: 70vh;
+}
+
+.container-cart .container-items {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  background-color: #ffff;
+}
+
+.container-cart .container-items .cart-item {
+  height: 200px;
+  padding: 5px;
+  margin: auto;
+  font-size: 1.1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container-cart .container-items .cart-item .image-item {
+  width: 50%;
+  text-align: center;
+}
+
+.container-cart .container-items .cart-item .image-item img {
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+}
+
+.container-cart .container-items .cart-item .info-item {
+  width: 50%;
+  text-align: center;
+}
+
+.container-cart .container-items .cart-item .info-item .icon-remove-item {
+  width: 90%;
+  padding: 10px;
+  text-align: right;
+}
+
+.container-cart .container-payment {
+  width: 90%;
+  padding: 20px 10px;
+  text-align: center;
+  margin: auto;
+  background-color: #f8f8f6f1;
+}
+
+.container-cart .container-payment p {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.container-cart .container-payment .form-order {
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  background-color: #b0dddd;
+}
+
+.cart-empty {
+  width: 90%;
+  background-color: #f8f8f67c;
+  margin: 5rem auto;
+  padding: 3.5rem;
+  text-align: center;
+}
+
+.cart-empty p {
+  font-size: 1.4rem;
+}
+
+.container-cardwidget {
+  position: relative;
+  width: 50px;
+}
+
+.container-cardwidget .number {
+  position: absolute;
+  font-size: 14px;
+  right: 0;
+  padding: 0.1rem 0.3rem;
+  border-radius: 50%;
+}
+
+.card {
+  height: 365px;
+}
+
+.card .product-img {
+  height: 200px;
+}
+
+.card .containerInfo {
+  background-color: #F8F8F6;
+}
+
+.card .containerInfo .card-title {
+  position: relative;
+  padding: 10px;
+}
+
+.card .containerInfo .card-title::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  left: 5%;
+  bottom: 0;
+  width: 90%;
+  background: black;
+}
+
+.container-buttons {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #cfcfcef1;
+}
+
+.container-buttons .control-count {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 10px 0px;
+}
+
+.container-detail {
+  width: 90%;
+  margin: auto;
+  background-color: #F8F8F6;
+}
+
+.container-detail .image-detail {
+  width: 100%;
+  text-align: center;
+}
+
+.container-detail .image-detail img {
+  width: 100%;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.container-detail .info-detail {
+  padding: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.container-detail .info-detail h2 {
+  padding: 15px 0px;
+  font-weight: bold;
+  position: relative;
+}
+
+.container-detail .info-detail h2::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  left: 10%;
+  bottom: 0;
+  width: 80%;
+  background: black;
+}
+
+.container-detail .info-detail p span {
+  background-color: #3ac8c8;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.container-list {
+  width: 80%;
+  margin: auto;
+}
+
+.navbar {
+  background-image: radial-gradient(circle at 50% -20.71%, #4b4a49 0, #061925 50%, #000000 100%);
+}
+
+.navbar .container .list {
+  font-size: 1.5rem;
+}
+
+.navbar .container .collapse {
+  -webkit-box-flex: unset;
+      -ms-flex-positive: unset;
+          flex-grow: unset;
+}
+/*# sourceMappingURL=styles.css.map */

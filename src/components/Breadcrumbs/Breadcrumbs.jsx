@@ -1,6 +1,5 @@
-import { Breadcrumb } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./Breadcrumbs.css";
+
 
 function Breadcrumbs({ category, bread}) {
   return (

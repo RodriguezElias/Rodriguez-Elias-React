@@ -1,0 +1,16 @@
+.container-breadcrumb {
+  background-color: $color-primary;
+  padding: 15px;
+  border-radius: 5px;
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    a {
+      text-decoration: none;
+      margin-right: 10px;
+    }
+  }
+}

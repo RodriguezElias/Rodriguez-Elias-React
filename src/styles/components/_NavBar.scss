@@ -1,0 +1,16 @@
+.navbar {
+  background-image: radial-gradient(
+    circle at 50% -20.71%,
+    #4b4a49 0,
+    #061925 50%,
+    #000000 100%
+  );
+  .container {
+    .list {
+      font-size: 1.5rem;
+    }
+    .collapse{
+      flex-grow: unset;
+    }
+  }
+}

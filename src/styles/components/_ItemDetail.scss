@@ -1,0 +1,40 @@
+.container-detail{
+  width: 90%;
+  margin: auto;
+  background-color: $background-color1;
+  .image-detail{
+    width: 100%;
+    text-align: center;
+    img{
+      width: 100%;
+      max-width: 300px;
+      max-height: 300px;
+    }
+  }
+  .info-detail{
+    padding: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    h2{
+      padding: 15px 0px;
+      font-weight: bold;
+      position: relative;
+    }
+    h2::before{
+      content: "";
+      position: absolute;
+      height: 2px;
+      left: 10%;
+      bottom: 0;
+      width: 80%;
+      background: black;
+    }
+    p span{
+      background-color: $color-primary;
+      padding: 8px;
+      border-radius: 8px;
+    }
+    }
+
+
+}

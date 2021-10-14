@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useCartContext } from "../../context/cartContext";
 import { Link } from "react-router-dom";
 import { Form } from "react-bootstrap";
-import "./Cart.css";
 import { getFirestore } from "../../services/getFirebase";
 import firebase from "firebase";
 import "firebase/firestore";
@@ -10,7 +9,7 @@ import ModalOrder from "../../modals/ModalOrder";
 
 export default function Cart() {
   const [totalPrice, setTotalPrice] = useState([]);
-  const [idOrder, setIdOrder] = useState("");
+  const [idorder, setidorder] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -44,7 +43,7 @@ export default function Cart() {
     const db = getFirestore();
     db.collection("orders")
       .add(order)
-      .then((resp) => setIdOrder(resp.id))
+      .then((resp) => setidorder(resp.id))
       .catch((err) => console.log(err))
       .finally(() => {
         setFormData({
@@ -95,14 +94,14 @@ export default function Cart() {
         <div className="container-cart">
           <div className="container-items">
             {cartList.map((item) => (
-              <div className="cart-item">
+              <div className="cart-item" key={item.item.id}>
                 <div className="image-item">
                   <img src={item.item.image} alt="" />
                 </div>
                 <div className="info-item">
                   <div className="icon-remove-item">
                     <button onClick={() => deleteItem(item)}>
-                      <i class="fas fa-trash-alt"></i>
+                      <i className="fas fa-trash-alt"></i>
                     </button>
                   </div>
                   <p>{item.item.name}</p>
@@ -130,7 +129,7 @@ export default function Cart() {
                     type="text"
                     placeholder="Nombre"
                     name="name"
-                    value={formData.name}
+                    defaultValue={formData.name}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -139,7 +138,7 @@ export default function Cart() {
                     type="text"
                     placeholder="Telefono"
                     name="tel"
-                    value={formData.tel}
+                    defaultValue={formData.tel}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -148,7 +147,7 @@ export default function Cart() {
                     type="email"
                     placeholder="Email"
                     name="email"
-                    value={formData.email}
+                    defaultValue={formData.email}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -159,14 +158,14 @@ export default function Cart() {
                     name="email2"
                   />
                 </Form.Group>
-                <button>
+                <button style={{backgroundColor:"#3ac8c8",padding:"4px",margin:"2px", borderRadius:"5px"}} >
                   Confirmar Compra
                 </button>
                 <ModalOrder
-                  onclick={deleteCart}
+                  mycustomattribute={deleteCart}
                   show={modalShow}
                   onHide={() => setModalShow(false)}
-                  idOrder={idOrder}
+                  idorder={idorder}
                 />
               </Form>
             </div>
@@ -177,7 +176,7 @@ export default function Cart() {
         <div className="cart-empty">
           <p>No hay productos en su carrito</p>
           <Link to="/">
-            <button>Ir a lista de productos</button>
+            <button className="button-primary">Ir a lista de productos</button>
           </Link>
         </div>
       )}
