@@ -16,7 +16,6 @@ Aun no se encuentra desplegado el proyecto...
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [React](https://es.reactjs.org/) - El framework web usado
 * [NPM](https://www.npmjs.com/) - Manejador de dependencias
