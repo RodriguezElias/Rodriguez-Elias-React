@@ -10,10 +10,8 @@ import CartContextProvider  from "./context/cartContext";
 function App() {
   return ( 
     <CartContextProvider>
-    <BrowserRouter>
-      <div className="header">
+    <BrowserRouter>    
         <NavBar />
-      </div>
       <Switch>
         <Route exact component={ItemListContainer}path='/' />
 
