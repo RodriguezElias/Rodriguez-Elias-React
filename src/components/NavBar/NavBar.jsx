@@ -23,15 +23,15 @@ export default function NavBar() {
     for (let i = 0; i < submenu_btn.length; i++) {
       submenu_btn[i].addEventListener("click", function () {
         const subMenu = this.nextElementSibling;
-        // const height = subMenu.scrollHeight;
-        // if (subMenu.classList.contains("show-submenu")){
-        //   subMenu.classList.remove("show-submenu")
-        //   subMenu.removeAttribute("style")
-        // }else{
-        //   subMenu.classList.add("show-submenu");
-        //   subMenu.style.height = height + "px"
-        // }
-        subMenu.classList.toggle("show-submenu");
+        const height = subMenu.scrollHeight;
+        if (subMenu.classList.contains("show-submenu")) {
+          subMenu.classList.remove("show-submenu");
+          subMenu.removeAttribute("style");
+        } else {
+          subMenu.classList.add("show-submenu");
+          subMenu.style.height = height + "px";
+        }
+        //subMenu.classList.toggle("show-submenu");
       });
     }
   };
@@ -48,38 +48,6 @@ export default function NavBar() {
 
   return (
     <>
-      {/* <Navbar expand="lg" variant="dark" className="navbar">
-      <Container className="container">
-        <Link exact to="/">
-          <Navbar.Brand className="list">Viva Lugano</Navbar.Brand>
-        </Link>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-        <Navbar.Collapse id="basic-navbar-nav" className="collapse">
-          <Nav className="me-auto list text-white">
-            <NavDropdown
-              className="text-white"
-              title="Menu"
-              id="basic-nav-dropdown"
-            >
-              <Link exact to="/categoria/Pc-escritorio" className="text-decoration-none">
-                <NavDropdown.Item href="#action/3.1">
-                  Pc Escritorio
-                </NavDropdown.Item>
-              </Link>
-              <Link exact to="/categoria/Laptop" className="text-decoration-none">
-                <NavDropdown.Item href="#action/3.2" >Laptop</NavDropdown.Item>
-              </Link>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Gabinetes</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-            <Link exact to="/cart">
-              <CardWidget count={state} />
-            </Link>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar> */}
       <div className="container-navbar">
         <header>
           <div className="navbar">
@@ -100,92 +68,246 @@ export default function NavBar() {
             </div>
             <div className="nav-bot">
               <nav className="desktop-nav">
-                <a href="#">Home</a>
-                <a href="#">Pc</a>
-                <a href="#">Componentes</a>
-                <a href="#">Perifericos</a>
+                <ul className="container-menu">
+                  <li className="container-submenu">
+                    <p className="mb-0">
+                      Pc <i className="fas fa-angle-down"></i>
+                    </p>
+                    <ul className="submenu">
+                      <li className="menu-item">
+                        <Link
+                          exact
+                          to="/categoria/Pc-escritorio"
+                          className="menu-link"
+                        >
+                          Escritorio
+                        </Link>
+                      </li>
+                      <li className="menu-item">
+                        <Link
+                          exact
+                          to="/categoria/Laptop"
+                          className="menu-link"
+                        >
+                          Laptop
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="container-submenu">
+                    <p href="#" className="mb-0">
+                      Componentes <i className="fas fa-angle-down"></i>
+                    </p>
+                    <ul className="submenu">
+                      <li className="menu-item">
+                        <Link exact to="/categoria/Ram" className="menu-link">
+                          Memoria Ram
+                        </Link>
+                      </li>
+                      <li className="menu-item">
+                        <Link
+                          exact
+                          to="/categoria/Disco-rigido"
+                          className="menu-link"
+                        >
+                          Disco Rigido
+                        </Link>
+                      </li>
+                      <li className="menu-item">
+                        <Link
+                          exact
+                          to="/categoria/Disco-solido"
+                          className="menu-link"
+                        >
+                          Disco Solido
+                        </Link>
+                      </li>
+                      <li className="menu-item">
+                        <Link
+                          exact
+                          to="/categoria/Motherboard"
+                          className="menu-link"
+                        >
+                          Motherboard
+                        </Link>
+                      </li>
+                      <li className="menu-item">
+                        <Link
+                          exact
+                          to="/categoria/Placa-video"
+                          className="menu-link"
+                        >
+                          Placa de video
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="container-submenu">
+                    <p href="#" className="mb-0">
+                      Perifericos <i className="fas fa-angle-down"></i>
+                    </p>
+                    <ul className="submenu">
+                      <li className="menu-item">
+                        <Link
+                          exact
+                          to="/categoria/Teclado"
+                          className="menu-link"
+                        >
+                          Teclado
+                        </Link>
+                      </li>
+                      <li className="menu-item">
+                        <Link exact to="/categoria/Mouse" className="menu-link">
+                          Mouse
+                        </Link>
+                      </li>
+                      <li className="menu-item">
+                        <Link
+                          exact
+                          to="/categoria/Auriculares"
+                          className="menu-link"
+                        >
+                          Auriculares
+                        </Link>
+                      </li>
+                      <li className="menu-item">
+                        <Link
+                          exact
+                          to="/categoria/Mousepad"
+                          className="menu-link"
+                        >
+                          Mousepad
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="container-submenu">
+                    <p href="#" className="mb-0">
+                      Administrar <i className="fas fa-angle-down"></i>
+                    </p>
+                    <ul className="submenu">
+                      <li className="menu-item">
+                        <Link
+                          exact
+                          to="/Add-product"
+                          className="menu-link"
+                        >
+                          Agregar Productos{" "}
+                          <i className="fas fa-box-open text-secondary"></i>
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
               </nav>
             </div>
           </div>
         </header>
         <nav className="mobile-nav">
-          <Link exact to="/cart">
-            <CardWidget count={state} />
-          </Link>
           <ul className="container-menu" id="menu">
             <li className="menu-item">
-              <Link exact to="/">
-                Home
+              <Link exact to="/cart">
+                <CardWidget count={state} />
               </Link>
             </li>
             <li className="container-submenu">
-              <a href="#" className="menu-link submenu-btn">
-                Pc
-              </a>
+              <p href="#" className="menu-link submenu-btn">
+                Administrar <i className="fas fa-angle-down"></i>
+              </p>
+            <ul className="submenu">
+              <li className="menu-item">
+                <Link exact to="/add-product" className="menu-link">
+                  Agregar Productos
+                  <i className="fas fa-box-open text-secondary"></i>
+                </Link>
+              </li>
+            </ul>
+            </li>
+            <li className="container-submenu">
+              <p href="#" className="menu-link submenu-btn">
+                Pc <i className="fas fa-angle-down"></i>
+              </p>
               <ul className="submenu">
                 <li className="menu-item">
-                  <a href="#" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Pc-escritorio"
+                    className="menu-link"
+                  >
                     Escritorio
-                  </a>
+                  </Link>
                 </li>
                 <li className="menu-item">
-                  <a href="#" className="menu-link">
+                  <Link exact to="/categoria/Laptop" className="menu-link">
                     Laptop
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="container-submenu">
-              <a href="#" className="menu-link submenu-btn">
-                Componentes
-              </a>
+              <p href="#" className="menu-link submenu-btn">
+                Componentes <i className="fas fa-angle-down"></i>
+              </p>
               <ul className="submenu">
                 <li className="menu-item">
-                  <a href="#" className="menu-link">
+                  <Link exact to="/categoria/Ram-ddr4" className="menu-link">
                     Memoria Ram
-                  </a>
+                  </Link>
                 </li>
                 <li className="menu-item">
-                  <a href="#" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Disco-rigido"
+                    className="menu-link"
+                  >
                     Disco Rigido
-                  </a>
+                  </Link>
                 </li>
                 <li className="menu-item">
-                  <a href="#" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Disco-solido"
+                    className="menu-link"
+                  >
+                    Disco solido
+                  </Link>
+                </li>
+                <li className="menu-item">
+                  <Link exact to="/categoria/Motherboard" className="menu-link">
                     Motherboard
-                  </a>
+                  </Link>
                 </li>
                 <li className="menu-item">
-                  <a href="#" className="menu-link">
+                  <Link exact to="/categoria/Placa-video" className="menu-link">
                     Placa de video
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="container-submenu">
-              <a href="#" className="menu-link submenu-btn">
-                Perifericos
-              </a>
+              <p href="#" className="menu-link submenu-btn">
+                Perifericos <i className="fas fa-angle-down"></i>
+              </p>
               <ul className="submenu">
                 <li className="menu-item">
-                  <a href="#" className="menu-link">
-                    Teclados
-                  </a>
+                  <Link exact to="/categoria/Teclado" className="menu-link">
+                    Teclado
+                  </Link>
                 </li>
                 <li className="menu-item">
-                  <a href="#" className="menu-link">
+                  <Link exact to="/categoria/Mouse" className="menu-link">
                     Mouse
-                  </a>
+                  </Link>
                 </li>
                 <li className="menu-item">
-                  <a href="#" className="menu-link">
+                  <Link exact to="/categoria/Auriculares" className="menu-link">
                     Auriculares
-                  </a>
+                  </Link>
                 </li>
                 <li className="menu-item">
-                  <a href="#" className="menu-link">
-                    Mouse Pads
-                  </a>
+                  <Link exact to="/categoria/Mousepad" className="menu-link">
+                    Mousepad
+                  </Link>
                 </li>
               </ul>
             </li>

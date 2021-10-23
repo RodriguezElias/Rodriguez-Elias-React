@@ -80,12 +80,20 @@ export default function Cart() {
     });
     setModalShow(true)
   };
+
   /*Guardar los inputs en el estado del formulario*/
   const handleOnChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    if (e.target.name === "tel") {
+      setFormData({
+        ...formData,
+        tel : Number(e.target.value),
+      });
+    }else{
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   return (
@@ -135,7 +143,7 @@ export default function Cart() {
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                   <Form.Label>Telefono</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="number"
                     placeholder="Telefono"
                     name="tel"
                     defaultValue={formData.tel}
@@ -162,6 +170,7 @@ export default function Cart() {
                   Confirmar Compra
                 </button>
                 <ModalOrder
+                  message={"Puede seguir comprando o ver sus ordenes de compras en el menu."}
                   mycustomattribute={deleteCart}
                   show={modalShow}
                   onHide={() => setModalShow(false)}

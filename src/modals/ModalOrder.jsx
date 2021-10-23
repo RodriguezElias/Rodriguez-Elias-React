@@ -15,18 +15,13 @@ export default function ModalOrder(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Compra Exitosa</h4>
-        <p>Puede seguir comprando o ver sus ordenes de compras en el menu.</p>
+        <h4>Operacion Exitosa</h4>
+        <p>{props.message}</p>
       </Modal.Body>
       <Modal.Footer>
         <button
+          className={"button-primary"}
           onClick={props.mycustomattribute}
-          style={{
-            backgroundColor: "#3ac8c8 ",
-            padding: "4px",
-            borderRadius: "5px",
-            margin: "2px",
-          }}
         >
           Cerrar
         </button>
