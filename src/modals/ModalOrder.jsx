@@ -11,10 +11,7 @@ export default function ModalOrder(props) {
     >
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
-          {props.idorder
-        ? <p>Id de compra: {props.idorder}</p> 
-        : <p>{props.title}</p> 
-      }
+          Id de compra: {props.idorder}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

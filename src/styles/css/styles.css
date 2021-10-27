@@ -51,7 +51,6 @@ body {
 }
 
 .container-cart .container-items .cart-item {
-  height: 200px;
   padding: 5px;
   margin: auto;
   font-size: 1.1rem;
@@ -113,6 +112,26 @@ body {
 
 .cart-empty p {
   font-size: 1.4rem;
+}
+
+@media screen and (min-width: 768px) {
+  .container-cart {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .container-cart .container-items {
+    margin: unset;
+    height: unset;
+  }
+  .container-cart .container-items .cart-item {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .container-cart .container-payment {
+    margin: unset;
+  }
 }
 
 .container-cardwidget {
@@ -187,30 +206,59 @@ body {
   background-color: #F8F8F6;
 }
 
-.container-detail .image-detail {
+.container-detail .detail .image-detail {
   width: 100%;
   text-align: center;
 }
 
-.container-detail .image-detail img {
+.container-detail .detail .image-detail img {
   width: 100%;
   max-width: 300px;
   max-height: 300px;
 }
 
-.container-detail .info-detail {
+.container-detail .detail .info-detail {
   padding: 10px;
   font-size: 1.2rem;
   text-align: center;
 }
 
-.container-detail .info-detail h2 {
+.container-detail .detail .info-detail .stock-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container-detail .detail .info-detail .cuotas {
+  font-weight: 600;
+  color: #12bb2e;
+}
+
+.container-detail .detail .info-detail .description-detail {
+  padding: 10px;
+  background-color: #cfcfcef1;
+}
+
+.container-detail .detail .info-detail .description-detail p {
+  text-align: initial;
+}
+
+.container-detail .detail .info-detail .envios {
+  font-weight: 600;
+  color: #3ac8c8;
+  margin: 1rem;
+}
+
+.container-detail .detail .info-detail h2 {
   padding: 15px 0px;
   font-weight: bold;
   position: relative;
 }
 
-.container-detail .info-detail h2::before {
+.container-detail .detail .info-detail h2::before {
   content: "";
   position: absolute;
   height: 2px;
@@ -220,10 +268,18 @@ body {
   background: black;
 }
 
-.container-detail .info-detail p span {
+.container-detail .detail .info-detail p span {
   background-color: #3ac8c8;
   padding: 8px;
   border-radius: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .detail {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 .container-list {

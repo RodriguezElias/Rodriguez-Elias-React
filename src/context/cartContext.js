@@ -28,7 +28,6 @@ export default function CartContextProvider({children}){
   const deleteItem= (item) =>{
     const deleteProduct = cartList.filter((prod) => prod.item.id !== item.item.id)
     setCartList([...deleteProduct])
-    console.log(cartList);
   }
   const calcPrice =()=>{
     return cartList.reduce((acum,prod)=> (acum + (prod.quantity * prod.item.price)), 0)

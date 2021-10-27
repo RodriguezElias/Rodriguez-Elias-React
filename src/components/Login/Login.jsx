@@ -1,38 +1,29 @@
 import { useLoginContext } from "../../context/loginContext";
 import { useState } from "react";
-import { Form, Alert } from "react-bootstrap";
-import ModalOrder from "../../modals/ModalOrder";
+import { Form } from "react-bootstrap";
 
 export default function Login() {
-  const [modalShow, setModalShow] = useState(false);
-  const [alertShow, setAlertShow] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const { user, loguearse, desloguearse } = useLoginContext();
+  const { user, logIn, logOut } = useLoginContext();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    loguearse(formData.email, formData.password);
-    setModalShow(true);
+    logIn(formData.email, formData.password);
 
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.stopPropagation();
-      setAlertShow(true)
     }
-    // setFormData({
-    //   email: "",
-    //   password: "",
-    // });
-    // e.target.reset();
-    // if (!user) {
-    //   setAlertShow(true)
-    // }
+    setFormData({
+      email: "",
+      password: "",
+    });
+    e.target.reset();
   };
   const handleOnChange = (e) => {
-    setAlertShow(false)
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -44,17 +35,7 @@ export default function Login() {
       {user && (
         <div className="cart-empty">
           <p>Esta logueado</p>
-          <button onClick={desloguearse}>desloguearse</button>
-
-          <ModalOrder
-            message={
-              "Se inicio sesion correctamente, puede realizar tareas de administrador"
-            }
-            title={"Login exitoso"}
-            mycustomattribute={() => setModalShow(false)}
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-          />
+          <button onClick={logOut} className="button-primary">Logout</button>
         </div>
       )}
       {!user && (
@@ -84,9 +65,6 @@ export default function Login() {
               />
             </Form.Group>
             <button className="button-primary">Iniciar sesion</button>
-            <Alert variant={"danger"} show={alertShow}>
-              Contraseña o usuario incorrecto, vuelve a intentar!
-            </Alert>
           </Form>
         </div>
       )}

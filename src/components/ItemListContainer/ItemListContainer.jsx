@@ -12,6 +12,9 @@ export default function ItemListContainer() {
     { id: 3 },
     { id: 4 },
     { id: 5 },
+    { id: 6 },
+    { id: 7 },
+    { id: 8 }
   ]);
   const [loading, setloading] = useState(true);
   const { idCategory } = useParams();
@@ -46,15 +49,17 @@ export default function ItemListContainer() {
   }, [idCategory]);
   return (
     <div className="container-list">
-      <Breadcrumbs category={idCategory}/>
-      {loading &&
-        product.map((prod) => {
-          return (
-            <div key={prod.id}>
-              <Placeholder />
-            </div>
-          );
-        })}
+      <Breadcrumbs category={idCategory} />
+      <div className="row">
+        {loading &&
+          product.map((prod) => {
+            return (
+              <div className="col-12 col-md-6 col-lg-4 col-xl-3 mt-3">
+                <Placeholder />
+              </div>
+            );
+          })}
+      </div>
       {!loading && <ItemList item={product} />}
     </div>
   );

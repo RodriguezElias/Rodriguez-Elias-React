@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useCartContext } from "../../context/cartContext";
 import { Link } from "react-router-dom";
-import { Form,Alert } from "react-bootstrap";
+import { Form, Alert } from "react-bootstrap";
 import { getFirestore } from "../../services/getFirebase";
 import firebase from "firebase";
 import "firebase/firestore";
@@ -89,19 +89,20 @@ export default function Cart() {
     });
     setModalShow(true);
   };
-  const validateEmail =()=>{
-    const email1 = document.querySelector(".email1")
-    const email2 = document.querySelector(".email2")
+  const validateEmail = () => {
+    const email1 = document.querySelector(".email1");
+    const email2 = document.querySelector(".email2");
     if (email1.value === email2.value) {
       setConfirmShow(true);
-      setAlertShow(false)
+      setAlertShow(false);
+    } else if (email1.value === " " || email2.value === " ") {
+      setConfirmShow(false);
+      setAlertShow(true);
+    } else {
+      setConfirmShow(false);
+      setAlertShow(true);
     }
-    else{
-      setConfirmShow(false)
-      setAlertShow(true)
-    }
-  }
-
+  };
 
   /*Guardar los inputs en el estado del formulario*/
   const handleOnChange = (e) => {
@@ -134,7 +135,8 @@ export default function Cart() {
                       <i className="fas fa-trash-alt"></i>
                     </button>
                   </div>
-                  <p>{item.item.name}</p>
+                  <p className="fs-4 fw-bold">{item.item.name}</p>
+                  <p>Precio: {item.item.price}</p>
                   <p>Cantidad: {item.quantity}</p>
                 </div>
               </div>
@@ -147,12 +149,15 @@ export default function Cart() {
               </p>
             </div>
             <div className="form-order">
-              <span>Complete el formulario para confirmar su compra</span>
+              <span className="fs-4 fw-bold ">
+                Complete el formulario para confirmar su compra
+              </span>
               <Form
                 validated={validated}
                 onChange={handleOnChange}
                 onSubmit={handleOnSubmit}
                 id="form-order"
+                className="mt-4"
               >
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                   <Form.Label>Nombre</Form.Label>
@@ -178,7 +183,7 @@ export default function Cart() {
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     required
-                    onChange={validateEmail}
+                    //onChange={validateEmail}
                     className="email1"
                     type="email"
                     placeholder="Email"

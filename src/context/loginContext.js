@@ -1,5 +1,6 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import firebase from "firebase";
+import swal from 'sweetalert';
 
 const loginContext = createContext();
 
@@ -15,7 +16,7 @@ export default function LoginContextProvider({ children }) {
   }, []);
   const [user, setUser] = useState("");
 
-  const loguearse = (email,password) => {
+  const logIn = (email,password) => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -26,11 +27,13 @@ export default function LoginContextProvider({ children }) {
             "firebase:authUser:AIzaSyBf4aArPvd7bARigOg1T3zU2dq2Fj-66oA:[DEFAULT]"
           )
         );
+        swal("Login exitoso", "Se inicio sesion correctamente, puede realizar tareas de administrador", "success");
       })
       .catch((error) => {
         let errorCode = error.code;
         let errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        swal("Error de sesion", "Contraseña o usuario incorrecto, vuelve a intentar!", "error");
       });
     firebase
       .auth()
@@ -52,16 +55,17 @@ export default function LoginContextProvider({ children }) {
         console.log(errorCode, errorMessage);
       });
   };
-  const desloguearse = () => {
+  const logOut = () => {
     firebase
       .auth()
       .signOut()
       .then((res) => {
         setUser(res);
+        swal("Logout exitoso", "Se cerro la sesion");
       });
   };
   return (
-    <loginContext.Provider value={{ user, loguearse, desloguearse }}>
+    <loginContext.Provider value={{ user, logIn, logOut }}>
       {children}
     </loginContext.Provider>
   );

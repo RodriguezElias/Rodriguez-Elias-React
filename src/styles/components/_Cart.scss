@@ -7,7 +7,6 @@
     margin: auto;
     background-color: #ffff;
     .cart-item {
-      height: 200px;
       padding: 5px;
       margin: auto;
       font-size: 1.1rem;
@@ -58,5 +57,19 @@
   p {
     font-size: 1.4rem;
   }
-  
+}
+@media screen and (min-width: 768px) {
+  .container-cart {
+    display: flex;
+    .container-items {
+      margin: unset;
+      height: unset;
+      .cart-item {
+        height: fit-content;
+      }
+    }
+    .container-payment {
+      margin: unset;
+    }
+  }
 }

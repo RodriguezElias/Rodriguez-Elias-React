@@ -13,7 +13,7 @@ export default function NavBar() {
     openSubmenu();
   }, [iconCart]);
 
-  const { user, desloguearse } = useLoginContext();
+  const { user, logOut } = useLoginContext();
 
   const openMenu = () => {
     const menu_btn = document.querySelector(".hamburger");
@@ -197,9 +197,13 @@ export default function NavBar() {
                           </Link>
                         </li>
                         <li className="menu-item">
-                        <Link exact to="/login" className="menu-link" onClick={desloguearse}>
-                            Desloguearse{" "}
-                            <i className="fas fa-box-open text-secondary"></i>
+                          <Link
+                            exact
+                            to="/login"
+                            className="menu-link"
+                            onClick={logOut}
+                          >
+                            Logout <i class="fas fa-user"></i>
                           </Link>
                         </li>
                       </ul>
@@ -209,7 +213,7 @@ export default function NavBar() {
                     <li className="container-submenu">
                       <Link exact to="/login" className="menu-link">
                         <p href="#" className="mb-0">
-                          Login
+                          Login <i class="fas fa-user"></i>
                         </p>
                       </Link>
                     </li>
@@ -219,10 +223,11 @@ export default function NavBar() {
             </div>
           </div>
         </header>
+        {/* --------------Navbar Mobile---------------- */}
         <nav className="mobile-nav">
           <ul className="container-menu" id="menu">
             <li className="menu-item">
-              <Link exact to="/cart">
+              <Link exact to="/cart" onClick={openMenu}>
                 <CardWidget count={state} />
               </Link>
             </li>
@@ -232,11 +237,43 @@ export default function NavBar() {
               </p>
               <ul className="submenu">
                 <li className="menu-item">
-                  <Link exact to="/add-product" className="menu-link">
-                    Agregar Productos
+                  <Link
+                    exact
+                    to="/add-product"
+                    className="menu-link"
+                    onClick={openMenu}
+                  >
+                    Agregar Productos{" "}
                     <i className="fas fa-box-open text-secondary"></i>
                   </Link>
                 </li>
+                {user && (
+                  <li className="menu-item">
+                    <Link
+                      exact
+                      to="/"
+                      className="menu-link"
+                      onClick={() => {
+                        logOut();
+                        openMenu();
+                      }}
+                    >
+                      Logout <i class="fas fa-user"></i>
+                    </Link>
+                  </li>
+                )}
+                {!user && (
+                  <li className="menu-item">
+                    <Link
+                      exact
+                      to="/login"
+                      className="menu-link"
+                      onClick={openMenu}
+                    >
+                      Login <i class="fas fa-user"></i>
+                    </Link>
+                  </li>
+                )}
               </ul>
             </li>
             <li className="container-submenu">
@@ -249,12 +286,18 @@ export default function NavBar() {
                     exact
                     to="/categoria/Pc-escritorio"
                     className="menu-link"
+                    onClick={openMenu}
                   >
                     Escritorio
                   </Link>
                 </li>
                 <li className="menu-item">
-                  <Link exact to="/categoria/Laptop" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Laptop"
+                    className="menu-link"
+                    onClick={openMenu}
+                  >
                     Laptop
                   </Link>
                 </li>
@@ -266,7 +309,12 @@ export default function NavBar() {
               </p>
               <ul className="submenu">
                 <li className="menu-item">
-                  <Link exact to="/categoria/Ram-ddr4" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Ram-ddr4"
+                    className="menu-link"
+                    onClick={openMenu}
+                  >
                     Memoria Ram
                   </Link>
                 </li>
@@ -275,6 +323,7 @@ export default function NavBar() {
                     exact
                     to="/categoria/Disco-rigido"
                     className="menu-link"
+                    onClick={openMenu}
                   >
                     Disco Rigido
                   </Link>
@@ -284,17 +333,28 @@ export default function NavBar() {
                     exact
                     to="/categoria/Disco-solido"
                     className="menu-link"
+                    onClick={openMenu}
                   >
                     Disco solido
                   </Link>
                 </li>
                 <li className="menu-item">
-                  <Link exact to="/categoria/Motherboard" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Motherboard"
+                    className="menu-link"
+                    onClick={openMenu}
+                  >
                     Motherboard
                   </Link>
                 </li>
                 <li className="menu-item">
-                  <Link exact to="/categoria/Placa-video" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Placa-video"
+                    className="menu-link"
+                    onClick={openMenu}
+                  >
                     Placa de video
                   </Link>
                 </li>
@@ -306,22 +366,42 @@ export default function NavBar() {
               </p>
               <ul className="submenu">
                 <li className="menu-item">
-                  <Link exact to="/categoria/Teclado" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Teclado"
+                    className="menu-link"
+                    onClick={openMenu}
+                  >
                     Teclado
                   </Link>
                 </li>
                 <li className="menu-item">
-                  <Link exact to="/categoria/Mouse" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Mouse"
+                    className="menu-link"
+                    onClick={openMenu}
+                  >
                     Mouse
                   </Link>
                 </li>
                 <li className="menu-item">
-                  <Link exact to="/categoria/Auriculares" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Auriculares"
+                    className="menu-link"
+                    onClick={openMenu}
+                  >
                     Auriculares
                   </Link>
                 </li>
                 <li className="menu-item">
-                  <Link exact to="/categoria/Mousepad" className="menu-link">
+                  <Link
+                    exact
+                    to="/categoria/Mousepad"
+                    className="menu-link"
+                    onClick={openMenu}
+                  >
                     Mousepad
                   </Link>
                 </li>
