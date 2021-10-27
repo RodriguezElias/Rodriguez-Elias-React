@@ -11,7 +11,7 @@ export default function CartContextProvider({children}){
   // function isInCart(id){
   //   return cartList.some(prod => prod.item.id === id)
   // }
-  function addToCart(item){
+  const addToCart=(item)=>{
     let productIndex = cartList.findIndex(prod => prod.item.id === item.item.id)
     if (productIndex === -1) {
       setCartList([...cartList, item])

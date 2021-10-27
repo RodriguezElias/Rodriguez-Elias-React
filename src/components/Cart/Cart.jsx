@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useCartContext } from "../../context/cartContext";
 import { Link } from "react-router-dom";
-import { Form } from "react-bootstrap";
+import { Form,Alert } from "react-bootstrap";
 import { getFirestore } from "../../services/getFirebase";
 import firebase from "firebase";
 import "firebase/firestore";
@@ -9,6 +9,9 @@ import ModalOrder from "../../modals/ModalOrder";
 
 export default function Cart() {
   const [totalPrice, setTotalPrice] = useState([]);
+  const [confirmShow, setConfirmShow] = useState(false);
+  const [alertShow, setAlertShow] = useState(false);
+  const [validated, setValidated] = useState(false);
   const [idorder, setidorder] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [formData, setFormData] = useState({
@@ -24,6 +27,12 @@ export default function Cart() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setValidated(true);
 
     /* Crear orden de compra*/
     let order = {};
@@ -78,17 +87,30 @@ export default function Cart() {
         })
         .catch((err) => console.log(err));
     });
-    setModalShow(true)
+    setModalShow(true);
   };
+  const validateEmail =()=>{
+    const email1 = document.querySelector(".email1")
+    const email2 = document.querySelector(".email2")
+    if (email1.value === email2.value) {
+      setConfirmShow(true);
+      setAlertShow(false)
+    }
+    else{
+      setConfirmShow(false)
+      setAlertShow(true)
+    }
+  }
+
 
   /*Guardar los inputs en el estado del formulario*/
   const handleOnChange = (e) => {
     if (e.target.name === "tel") {
       setFormData({
         ...formData,
-        tel : Number(e.target.value),
+        tel: Number(e.target.value),
       });
-    }else{
+    } else {
       setFormData({
         ...formData,
         [e.target.name]: e.target.value,
@@ -127,6 +149,7 @@ export default function Cart() {
             <div className="form-order">
               <span>Complete el formulario para confirmar su compra</span>
               <Form
+                validated={validated}
                 onChange={handleOnChange}
                 onSubmit={handleOnSubmit}
                 id="form-order"
@@ -134,6 +157,7 @@ export default function Cart() {
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                   <Form.Label>Nombre</Form.Label>
                   <Form.Control
+                    required
                     type="text"
                     placeholder="Nombre"
                     name="name"
@@ -143,7 +167,8 @@ export default function Cart() {
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                   <Form.Label>Telefono</Form.Label>
                   <Form.Control
-                    type="number"
+                    required
+                    type="tel"
                     placeholder="Telefono"
                     name="tel"
                     defaultValue={formData.tel}
@@ -152,6 +177,9 @@ export default function Cart() {
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                   <Form.Label>Email</Form.Label>
                   <Form.Control
+                    required
+                    onChange={validateEmail}
+                    className="email1"
                     type="email"
                     placeholder="Email"
                     name="email"
@@ -161,16 +189,37 @@ export default function Cart() {
                 <Form.Group className="mb-3" controlId="formGroupPassword">
                   <Form.Label>Email</Form.Label>
                   <Form.Control
+                    className="email2"
+                    onChange={validateEmail}
+                    required
                     type="email"
                     placeholder="Confirme su email"
                     name="email2"
                   />
+                  <Form.Text id="passwordHelpBlock" muted>
+                    Podra confirmar su compra una vez que complete todo el
+                    formulario
+                  </Form.Text>
                 </Form.Group>
-                <button style={{backgroundColor:"#3ac8c8",padding:"4px",margin:"2px", borderRadius:"5px"}} >
-                  Confirmar Compra
-                </button>
+                {confirmShow === true && (
+                  <button
+                    style={{
+                      backgroundColor: "#3ac8c8",
+                      padding: "4px",
+                      margin: "2px",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    Confirmar Compra
+                  </button>
+                )}
+                <Alert variant={"danger"} show={alertShow}>
+                  Los Emails no coinciden, vuelve a intentar!
+                </Alert>
                 <ModalOrder
-                  message={"Puede seguir comprando o ver sus ordenes de compras en el menu."}
+                  message={
+                    "Puede seguir comprando o ver sus ordenes de compras en el menu."
+                  }
                   mycustomattribute={deleteCart}
                   show={modalShow}
                   onHide={() => setModalShow(false)}

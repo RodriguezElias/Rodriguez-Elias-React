@@ -96,9 +96,10 @@ body {
 }
 
 .container-cart .container-payment .form-order {
-  width: 100%;
-  margin: auto;
+  width: 90%;
   padding: 20px;
+  margin: auto;
+  text-align: center;
   background-color: #b0dddd;
 }
 
@@ -490,5 +491,13 @@ body {
 .form-add span {
   font-size: 1.3rem;
   font-weight: bolder;
+}
+
+.form-login {
+  width: 90%;
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+  background-color: #b0dddd;
 }
 /*# sourceMappingURL=styles.css.map */

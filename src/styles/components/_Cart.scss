@@ -44,10 +44,7 @@
       font-size: 1.3rem;
     }
     .form-order {
-      width: 100%;
-      margin: auto;
-      padding: 20px;
-      background-color: $color-secondary;
+      @include form;
     }
   }
 }

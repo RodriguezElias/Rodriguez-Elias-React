@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import CardWidget from "../CarWidget/CardWidget";
 import { Link } from "react-router-dom";
+import CardWidget from "../CarWidget/CardWidget";
 import { useCartContext } from "../../context/cartContext";
+import { useLoginContext } from "../../context/loginContext";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function NavBar() {
   const [state, setstate] = useState(0);
@@ -11,6 +12,8 @@ export default function NavBar() {
     setstate(iconCart());
     openSubmenu();
   }, [iconCart]);
+
+  const { user, desloguearse } = useLoginContext();
 
   const openMenu = () => {
     const menu_btn = document.querySelector(".hamburger");
@@ -181,23 +184,36 @@ export default function NavBar() {
                       </li>
                     </ul>
                   </li>
-                  <li className="container-submenu">
-                    <p href="#" className="mb-0">
-                      Administrar <i className="fas fa-angle-down"></i>
-                    </p>
-                    <ul className="submenu">
-                      <li className="menu-item">
-                        <Link
-                          exact
-                          to="/Add-product"
-                          className="menu-link"
-                        >
-                          Agregar Productos{" "}
-                          <i className="fas fa-box-open text-secondary"></i>
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
+                  {user && (
+                    <li className="container-submenu">
+                      <p href="#" className="mb-0">
+                        Administrar <i className="fas fa-angle-down"></i>
+                      </p>
+                      <ul className="submenu">
+                        <li className="menu-item">
+                          <Link exact to="/Add-product" className="menu-link">
+                            Agregar Productos{" "}
+                            <i className="fas fa-box-open text-secondary"></i>
+                          </Link>
+                        </li>
+                        <li className="menu-item">
+                        <Link exact to="/login" className="menu-link" onClick={desloguearse}>
+                            Desloguearse{" "}
+                            <i className="fas fa-box-open text-secondary"></i>
+                          </Link>
+                        </li>
+                      </ul>
+                    </li>
+                  )}
+                  {!user && (
+                    <li className="container-submenu">
+                      <Link exact to="/login" className="menu-link">
+                        <p href="#" className="mb-0">
+                          Login
+                        </p>
+                      </Link>
+                    </li>
+                  )}
                 </ul>
               </nav>
             </div>
@@ -214,14 +230,14 @@ export default function NavBar() {
               <p href="#" className="menu-link submenu-btn">
                 Administrar <i className="fas fa-angle-down"></i>
               </p>
-            <ul className="submenu">
-              <li className="menu-item">
-                <Link exact to="/add-product" className="menu-link">
-                  Agregar Productos
-                  <i className="fas fa-box-open text-secondary"></i>
-                </Link>
-              </li>
-            </ul>
+              <ul className="submenu">
+                <li className="menu-item">
+                  <Link exact to="/add-product" className="menu-link">
+                    Agregar Productos
+                    <i className="fas fa-box-open text-secondary"></i>
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li className="container-submenu">
               <p href="#" className="menu-link submenu-btn">
