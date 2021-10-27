@@ -11,7 +11,7 @@ export default function CartContextProvider({children}){
   // function isInCart(id){
   //   return cartList.some(prod => prod.item.id === id)
   // }
-  const addToCart=(item)=>{
+  const addToCart=(item)=>{  
     let productIndex = cartList.findIndex(prod => prod.item.id === item.item.id)
     if (productIndex === -1) {
       setCartList([...cartList, item])
@@ -32,11 +32,9 @@ export default function CartContextProvider({children}){
   const calcPrice =()=>{
     return cartList.reduce((acum,prod)=> (acum + (prod.quantity * prod.item.price)), 0)
   }
-
   const iconCart = () => {
     return cartList.reduce((acum, prod) => acum + prod.quantity, 0)
   }
-  
   return(
     <cartContext.Provider value={{cartList, addToCart, deleteCart, calcPrice, deleteItem, iconCart}}>
       {children}

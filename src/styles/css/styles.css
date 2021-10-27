@@ -147,6 +147,10 @@ body {
   border-radius: 50%;
 }
 
+.container-cardwidget span {
+  background-color: #3ac8c8;
+}
+
 .card {
   height: 100%;
 }

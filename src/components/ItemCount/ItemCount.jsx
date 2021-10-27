@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 
+
 export default function ItemCount({ stock, onAdd }) {
   const [initial, setInitial] = useState();
   const [stockItem, setStockItem] = useState()
@@ -55,14 +56,14 @@ export default function ItemCount({ stock, onAdd }) {
           <>
             <div style={{ display: state ? "block" : "none" }}>
               <Link to="/cart">
-                <button className="  button-primary">Terminar compra</button>
+                <button className="button-primary">Terminar compra</button>
               </Link>
               <Link to="/">
-                <button className="  button-primary">Seguir comprando</button>
+                <button className="button-primary">Seguir comprando</button>
               </Link>
             </div>
             {state === false && (
-              <button onClick={addCart}>Agregar Al carrito</button>
+              <button onClick={addCart} className="button-primary">Agregar Al carrito</button>
             )}
           </>
         )}

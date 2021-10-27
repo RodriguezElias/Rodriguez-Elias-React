@@ -203,7 +203,7 @@ export default function NavBar() {
                             className="menu-link"
                             onClick={logOut}
                           >
-                            Logout <i class="fas fa-user"></i>
+                            Logout <i className="fas fa-user"></i>
                           </Link>
                         </li>
                       </ul>
@@ -213,7 +213,7 @@ export default function NavBar() {
                     <li className="container-submenu">
                       <Link exact to="/login" className="menu-link">
                         <p href="#" className="mb-0">
-                          Login <i class="fas fa-user"></i>
+                          Login <i Name="fas fa-user"></i>
                         </p>
                       </Link>
                     </li>
@@ -258,7 +258,7 @@ export default function NavBar() {
                         openMenu();
                       }}
                     >
-                      Logout <i class="fas fa-user"></i>
+                      Logout <i className="fas fa-user"></i>
                     </Link>
                   </li>
                 )}
@@ -270,7 +270,7 @@ export default function NavBar() {
                       className="menu-link"
                       onClick={openMenu}
                     >
-                      Login <i class="fas fa-user"></i>
+                      Login <i className="fas fa-user"></i>
                     </Link>
                   </li>
                 )}

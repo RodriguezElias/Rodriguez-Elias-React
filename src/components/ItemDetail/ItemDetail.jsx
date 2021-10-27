@@ -46,10 +46,10 @@ export default function ItemDetail({ item }) {
             {item.stock >= 1 && <ItemCount onAdd={onAdd} stock={item.stock} />}
             <p className="envios">
               {" "}
-              <i class="fas fa-truck"></i> ENVIOS A TODO EL PAÍS
+              <i className="fas fa-truck"></i> ENVIOS A TODO EL PAÍS
             </p>
             <div className="description-detail">
-              <p>Descripcion del producto</p>
+              <p>Descripcion del producto: </p>
               <h4>{item.description}</h4>
             </div>
           </div>
