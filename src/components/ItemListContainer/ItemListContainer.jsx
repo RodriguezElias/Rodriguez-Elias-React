@@ -54,7 +54,7 @@ export default function ItemListContainer() {
         {loading &&
           product.map((prod) => {
             return (
-              <div className="col-12 col-md-6 col-lg-4 col-xl-3 mt-3">
+              <div className="col-12 col-md-6 col-lg-4 col-xl-3 mt-3" key={prod.id}>
                 <Placeholder />
               </div>
             );

@@ -1,4 +1,5 @@
-import { useState, createContext , useContext } from "react";
+import { createContext , useContext } from "react";
+import {useSessionStorage} from "../customHooks/useSessionStorage"
 
 const cartContext = createContext([])
 
@@ -6,7 +7,7 @@ export const useCartContext = () => useContext(cartContext)
 
 
 export default function CartContextProvider({children}){
-  const [cartList, setCartList] = useState([])
+  const [cartList, setCartList] = useSessionStorage("cart", [])
   
   // function isInCart(id){
   //   return cartList.some(prod => prod.item.id === id)

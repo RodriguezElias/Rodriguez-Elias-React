@@ -213,7 +213,7 @@ export default function NavBar() {
                     <li className="container-submenu">
                       <Link exact to="/login" className="menu-link">
                         <p href="#" className="mb-0">
-                          Login <i Name="fas fa-user"></i>
+                          Login <i className="fas fa-user"></i>
                         </p>
                       </Link>
                     </li>
