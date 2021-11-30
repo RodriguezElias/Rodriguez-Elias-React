@@ -18,10 +18,12 @@ export default function Cart() {
   });
   const { cartList, calcPrice, deleteItem } = useCartContext();
 
+
   useEffect(() => {
     setTotalPrice(calcPrice());
   }, [cartList, calcPrice]);
 
+  console.log(cartList);
   const handleOnSubmit = (e) => {
     /* Crear orden de compra*/
     let order = {};
@@ -105,23 +107,23 @@ export default function Cart() {
                 image={item.item.image}
                 name={item.item.name}
                 price={item.item.price}
-                quantity={item.item.quantity}
+                quantity={item.quantity}
                 deleteitem={deleteItem}
               />
             ))}
           </div>
           <div className="container-payment">
-            <div className="payment-info">
-              <p>
-                Precio Total: <span>{totalPrice}</span>
-              </p>
-            </div>
             <FormOrder
               handleOnChange={handleOnChange}
               handleOnSubmit={handleOnSubmit}
               idorder={idorder}
               ModalShow={modalShow}
             />
+            <div className="payment-info mt-5">
+              <p className="fw-bold fs-3">
+                Precio Total del carrito: <span>{`${totalPrice}$`}</span>
+              </p>
+            </div>
           </div>
         </div>
       )}
