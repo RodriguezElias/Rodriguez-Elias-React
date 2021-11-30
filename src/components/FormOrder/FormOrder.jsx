@@ -75,7 +75,7 @@ export default function FormOrder({
               maxLength: { value: 12, message: "Longitud maxima excedida" },
               pattern: {
                 value:
-                  /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/i,
+                  /^(\+\d{1,2}\s?)?1?-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/i,
                 message: "Ingrese un telefono valido",
               },
             })}
