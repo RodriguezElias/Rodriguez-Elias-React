@@ -14,39 +14,26 @@ export default function ItemListContainer() {
     { id: 5 },
     { id: 6 },
     { id: 7 },
-    { id: 8 }
+    { id: 8 },
   ]);
   const [loading, setloading] = useState(true);
   const { idCategory } = useParams();
 
   useEffect(() => {
-    if (idCategory) {
-      const dbQuery = getFirestore();
-      dbQuery
-        .collection("items")
-        .where("category", "==", idCategory)
-        .get()
-        .then((resp) => {
-          setProduct(
-            resp.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
-          );
-        })
-        .catch((err) => console.log(err))
-        .finally(() => setloading(false));
-    } else {
-      const dbQuery = getFirestore();
-      dbQuery
-        .collection("items")
-        .get()
-        .then((resp) => {
-          setProduct(
-            resp.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
-          );
-        })
-        .catch((err) => console.log(err))
-        .finally(() => setloading(false));
-    }
+    const dbQuery = getFirestore();
+    const itemListQuery = idCategory
+      ? dbQuery.collection("items").where("category", "==", idCategory)
+      : dbQuery.collection("items");
+      
+    itemListQuery.get()
+      .then((resp) => {
+        setProduct(resp.docs.map((prod) => ({ id: prod.id, ...prod.data() })));
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setloading(false));
   }, [idCategory]);
+
+  
   return (
     <div className="container-list">
       <Breadcrumbs category={idCategory} />
@@ -54,7 +41,10 @@ export default function ItemListContainer() {
         {loading &&
           product.map((prod) => {
             return (
-              <div className="col-12 col-md-6 col-lg-4 col-xl-3 mt-3" key={prod.id}>
+              <div
+                className="col-12 col-md-6 col-lg-4 col-xl-3 mt-3"
+                key={prod.id}
+              >
                 <Placeholder />
               </div>
             );

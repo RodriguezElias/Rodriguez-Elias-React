@@ -5,3 +5,15 @@
     font-weight: bolder;
   }
 }
+
+
+@media(min-width:768px){
+  .form-add{
+    width: 70%;
+  }
+}
+@media(min-width:1024px){
+  .form-add{
+    width: 60%;
+  }
+}

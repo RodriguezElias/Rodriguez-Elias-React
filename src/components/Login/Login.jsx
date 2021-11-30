@@ -1,6 +1,7 @@
 import { useLoginContext } from "../../context/loginContext";
 import { useState } from "react";
 import { Form } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -8,20 +9,23 @@ export default function Login() {
     password: "",
   });
   const { user, logIn, logOut } = useLoginContext();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
+  const handleOnSubmit = () => {
     logIn(formData.email, formData.password);
-
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.stopPropagation();
-    }
     setFormData({
       email: "",
       password: "",
     });
-    e.target.reset();
+    reset({
+      email: "",
+      password: "",
+    });
   };
   const handleOnChange = (e) => {
     setFormData({
@@ -31,39 +35,59 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div
+      style={{ height: "70vh" }}
+      className=" d-flex justify-content-center align-items-center"
+    >
       {user && (
         <div className="cart-empty">
           <p>Esta logueado</p>
-          <button onClick={logOut} className="button-primary">Logout</button>
+          <button onClick={logOut} className="button-primary">
+            Logout
+          </button>
         </div>
       )}
       {!user && (
         <div className="form-login">
-          <span className="mt-3">Complete el formulario para loguearse</span>
+          <span className="mt-3 mb-4 fs-4 fw-bold">
+            Ingrese usuario y contraseña
+          </span>
           <Form
             onChange={handleOnChange}
-            onSubmit={handleOnSubmit}
+            onSubmit={handleSubmit(handleOnSubmit)}
             id="form-order"
           >
-            <Form.Group className="mb-3" controlId="formGroupPassword">
+            <Form.Group className="mt-3 mb-3 " controlId="formGroupEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
-                required
-                type="email"
+                type="text"
                 placeholder="Email"
-                name="email"
+                {...register("email", {
+                  required: "Campo obligatorio",
+                  pattern: {
+                    value:
+                      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/i,
+                    message: "Ingrese un Email Valido",
+                  },
+                })}
               />
+              <span className="text-danger text-small d-block mt-2 ms-3 text-start">
+                {errors?.email?.message}
+              </span>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formGroupPassword">
               <Form.Label>Contraseña</Form.Label>
               <Form.Control
-                required
                 type="password"
                 placeholder="Contraseña"
-                name="password"
+                {...register("password", {
+                  required: "Campo obligatorio",
+                })}
               />
             </Form.Group>
+            <span className="text-danger text-small d-block mt-2 ms-3 text-start">
+              {errors?.password?.message}
+            </span>
             <button className="button-primary">Iniciar sesion</button>
           </Form>
         </div>

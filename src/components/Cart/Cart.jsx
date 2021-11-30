@@ -1,17 +1,14 @@
 import { useState, useEffect } from "react";
 import { useCartContext } from "../../context/cartContext";
 import { Link } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
 import { getFirestore } from "../../services/getFirebase";
 import firebase from "firebase";
 import "firebase/firestore";
-import ModalOrder from "../../modals/ModalOrder";
+import FormOrder from "../FormOrder/FormOrder";
+import CartItem from "../CartItem/CartItem";
 
 export default function Cart() {
   const [totalPrice, setTotalPrice] = useState([]);
-  const [confirmShow, setConfirmShow] = useState(false);
-  const [alertShow, setAlertShow] = useState(false);
-  const [validated, setValidated] = useState(false);
   const [idorder, setidorder] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [formData, setFormData] = useState({
@@ -19,21 +16,13 @@ export default function Cart() {
     tel: "",
     email: "",
   });
-  const { cartList, calcPrice, deleteItem, deleteCart } = useCartContext();
+  const { cartList, calcPrice, deleteItem } = useCartContext();
 
   useEffect(() => {
     setTotalPrice(calcPrice());
   }, [cartList, calcPrice]);
 
   const handleOnSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    setValidated(true);
-
     /* Crear orden de compra*/
     let order = {};
     order.date = firebase.firestore.Timestamp.fromDate(new Date());
@@ -60,7 +49,6 @@ export default function Cart() {
           tel: "",
           email: "",
         });
-        e.target.reset();
       });
 
     /*Actualizar el stock en el listado de items*/
@@ -89,20 +77,6 @@ export default function Cart() {
     });
     setModalShow(true);
   };
-  const validateEmail = () => {
-    const email1 = document.querySelector(".email1");
-    const email2 = document.querySelector(".email2");
-    if (email1.value === email2.value) {
-      setConfirmShow(true);
-      setAlertShow(false);
-    } else if (email1.value === " " || email2.value === " ") {
-      setConfirmShow(false);
-      setAlertShow(true);
-    } else {
-      setConfirmShow(false);
-      setAlertShow(true);
-    }
-  };
 
   /*Guardar los inputs en el estado del formulario*/
   const handleOnChange = (e) => {
@@ -125,21 +99,15 @@ export default function Cart() {
         <div className="container-cart">
           <div className="container-items">
             {cartList.map((item) => (
-              <div className="cart-item" key={item.item.id}>
-                <div className="image-item">
-                  <img src={item.item.image} alt="" />
-                </div>
-                <div className="info-item">
-                  <div className="icon-remove-item">
-                    <button onClick={() => deleteItem(item)}>
-                      <i className="fas fa-trash-alt"></i>
-                    </button>
-                  </div>
-                  <p className="fs-4 fw-bold">{item.item.name}</p>
-                  <p>Precio: {item.item.price}</p>
-                  <p>Cantidad: {item.quantity}</p>
-                </div>
-              </div>
+              <CartItem
+                key={item.item.id}
+                item={item}
+                image={item.item.image}
+                name={item.item.name}
+                price={item.item.price}
+                quantity={item.item.quantity}
+                deleteitem={deleteItem}
+              />
             ))}
           </div>
           <div className="container-payment">
@@ -148,90 +116,12 @@ export default function Cart() {
                 Precio Total: <span>{totalPrice}</span>
               </p>
             </div>
-            <div className="form-order">
-              <span className="fs-4 fw-bold ">
-                Complete el formulario para confirmar su compra
-              </span>
-              <Form
-                validated={validated}
-                onChange={handleOnChange}
-                onSubmit={handleOnSubmit}
-                id="form-order"
-                className="mt-4"
-              >
-                <Form.Group className="mb-3" controlId="formGroupPassword">
-                  <Form.Label>Nombre</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder="Nombre"
-                    name="name"
-                    defaultValue={formData.name}
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formGroupPassword">
-                  <Form.Label>Telefono</Form.Label>
-                  <Form.Control
-                    required
-                    type="tel"
-                    placeholder="Telefono"
-                    name="tel"
-                    defaultValue={formData.tel}
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formGroupEmail">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    required
-                    //onChange={validateEmail}
-                    className="email1"
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    defaultValue={formData.email}
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formGroupPassword">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    className="email2"
-                    onChange={validateEmail}
-                    required
-                    type="email"
-                    placeholder="Confirme su email"
-                    name="email2"
-                  />
-                  <Form.Text id="passwordHelpBlock" muted>
-                    Podra confirmar su compra una vez que complete todo el
-                    formulario
-                  </Form.Text>
-                </Form.Group>
-                {confirmShow === true && (
-                  <button
-                    style={{
-                      backgroundColor: "#3ac8c8",
-                      padding: "4px",
-                      margin: "2px",
-                      borderRadius: "5px",
-                    }}
-                  >
-                    Confirmar Compra
-                  </button>
-                )}
-                <Alert variant={"danger"} show={alertShow}>
-                  Los Emails no coinciden, vuelve a intentar!
-                </Alert>
-                <ModalOrder
-                  message={
-                    "Puede seguir comprando o ver sus ordenes de compras en el menu."
-                  }
-                  mycustomattribute={deleteCart}
-                  show={modalShow}
-                  onHide={() => setModalShow(false)}
-                  idorder={idorder}
-                />
-              </Form>
-            </div>
+            <FormOrder
+              handleOnChange={handleOnChange}
+              handleOnSubmit={handleOnSubmit}
+              idorder={idorder}
+              ModalShow={modalShow}
+            />
           </div>
         </div>
       )}

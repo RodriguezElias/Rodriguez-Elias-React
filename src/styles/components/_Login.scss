@@ -1,3 +1,12 @@
 .form-login{
   @include form;
 }
+
+@media(min-width:1024px){
+  .form-login{
+    width: 40%;
+    height: 50vh;
+    margin: auto;
+  }
+
+}

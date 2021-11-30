@@ -1,5 +1,8 @@
 @mixin form {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 20px;
   margin: auto;
   text-align: center;
